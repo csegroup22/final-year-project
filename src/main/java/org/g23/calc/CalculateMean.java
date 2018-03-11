@@ -8,7 +8,7 @@ import org.g23.entities.json.in.Activity_;
 import org.g23.entities.json.in.LocationData;
 import org.g23.entities.json.out.StayPoint;
 
-public class ComputeMean
+public class CalculateMean
 {
 	public StayPoint computeMeanPoint(int i, int j, LocationData data)
 	{

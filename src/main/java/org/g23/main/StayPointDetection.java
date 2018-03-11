@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 import org.g23.calc.CalculateDistance;
 import org.g23.calc.CalculateTimeDifference;
-import org.g23.calc.ComputeMean;
+import org.g23.calc.CalculateMean;
 import org.g23.entities.json.in.LocationData;
 import org.g23.entities.json.out.StayPoint;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -24,7 +24,7 @@ public class StayPointDetection
 		File file=new File("/home/nirmal/Documents/Final-Year-Project/Input/nks-lh.json");
 		ObjectMapper mapper=new ObjectMapper();
 		LocationData data=mapper.readValue(file, LocationData.class);
-		ComputeMean computeMean=new ComputeMean();
+		CalculateMean computeMean=new CalculateMean();
 		
 		int i=0;
 		int pointNum=data.getLocations().size();
