@@ -53,6 +53,7 @@ public class ProjectInterface
 			jsonGenerator.generateJsonFile(stayPoints,jsonDestFile);
 			kmlGenerator.generateKmlFile(stayPoints,kmlDestFile);
 		}
+		
 		System.out.println("JSON Files at : "+jsonFolder.getAbsolutePath());
 		System.out.println("KML Files at : "+kmlFolder.getAbsolutePath());
 	}
