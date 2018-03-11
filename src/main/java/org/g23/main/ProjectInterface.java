@@ -21,6 +21,7 @@ public class ProjectInterface
 	{
 		StayPointCalc stayPointDetection=new StayPointCalc();
 		FileSelector fileSelector=new FileSelector();
+		
 		ArrayList<File> files = fileSelector.getFiles();
 		
 		String currDir=fileSelector.getCurrentDirectory();
