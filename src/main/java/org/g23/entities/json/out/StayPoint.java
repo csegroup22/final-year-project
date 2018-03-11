@@ -14,8 +14,8 @@ public class StayPoint
     Timestamp arrivalTime;
     Timestamp departureTime;
     private List<Activity> activity;
-	public StayPoint(Timestamp meanTime, int latitudeE7, int longitudeE7, int accuracy, Timestamp arrivalTime,
-			Timestamp departureTime, List<Activity> activity) {
+	public StayPoint(Timestamp meanTime, int latitudeE7, int longitudeE7, int accuracy, Timestamp arrivalTime, Timestamp departureTime, List<Activity> activity)
+	{
 		super();
 		this.meanTime = meanTime;
 		this.latitudeE7 = latitudeE7;
@@ -25,46 +25,60 @@ public class StayPoint
 		this.departureTime = departureTime;
 		this.activity = activity;
 	}
-	public Timestamp getMeanTime() {
+	public Timestamp getMeanTime()
+	{
 		return meanTime;
 	}
-	public void setMeanTime(Timestamp meanTime) {
+	public void setMeanTime(Timestamp meanTime)
+	{
 		this.meanTime = meanTime;
 	}
-	public int getLatitudeE7() {
+	public int getLatitudeE7()
+	{
 		return latitudeE7;
 	}
-	public void setLatitudeE7(int latitudeE7) {
+	public void setLatitudeE7(int latitudeE7)
+	{
 		this.latitudeE7 = latitudeE7;
 	}
-	public int getLongitudeE7() {
+	public int getLongitudeE7()
+	{
 		return longitudeE7;
 	}
-	public void setLongitudeE7(int longitudeE7) {
+	public void setLongitudeE7(int longitudeE7)
+	{
 		this.longitudeE7 = longitudeE7;
 	}
-	public int getAccuracy() {
+	public int getAccuracy()
+	{
 		return accuracy;
 	}
-	public void setAccuracy(int accuracy) {
+	public void setAccuracy(int accuracy)
+	{
 		this.accuracy = accuracy;
 	}
-	public Timestamp getArrivalTime() {
+	public Timestamp getArrivalTime()
+	{
 		return arrivalTime;
 	}
-	public void setArrivalTime(Timestamp arrivalTime) {
+	public void setArrivalTime(Timestamp arrivalTime)
+	{
 		this.arrivalTime = arrivalTime;
 	}
-	public Timestamp getDepartureTime() {
+	public Timestamp getDepartureTime()
+	{
 		return departureTime;
 	}
-	public void setDepartureTime(Timestamp departureTime) {
+	public void setDepartureTime(Timestamp departureTime)
+	{
 		this.departureTime = departureTime;
 	}
-	public List<Activity> getActivity() {
+	public List<Activity> getActivity()
+	{
 		return activity;
 	}
-	public void setActivity(List<Activity> activity) {
+	public void setActivity(List<Activity> activity)
+	{
 		this.activity = activity;
 	}
 	@Override

@@ -1,4 +1,4 @@
-package org.g23.main;
+package org.g23.filegenerator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,14 +10,13 @@ import de.micromata.opengis.kml.v_2_2_0.AltitudeMode;
 import de.micromata.opengis.kml.v_2_2_0.Document;
 import de.micromata.opengis.kml.v_2_2_0.Kml;
 
-public class KmlFileGenerator
+public class StayPointKML
 {
 	private final int convFactor=-7;
 	
-	@SuppressWarnings(value = { "" })
-	public void generateKML(HashSet<StayPoint> stayPoints) throws FileNotFoundException
+	public void generateKmlFile(HashSet<StayPoint> stayPoints) throws FileNotFoundException
 	{
-		File kmlCoordinatesFile=new File("/home/nirmal/Documents/Final-Year-Project/Stay_Points.kml");
+		File kmlCoordinatesFile=new File("/home/nirmal/Documents/Final-Year-Project/Output/Stay_Points.kml");
 		Kml kml= new Kml();
 		Document document = kml.createAndSetDocument().withName("Stay Points KML").withOpen(true);
 		
@@ -33,6 +32,6 @@ public class KmlFileGenerator
 			i++;
 		}
 		kml.marshal(kmlCoordinatesFile);
-		System.out.println("Stay Points(KML) at : /home/nirmal/Documents/Final-Year-Project/Stay_Points.json");
+		System.out.println("Stay Points(KML) at : /home/nirmal/Documents/Final-Year-Project/Output/Stay_Points.kml");
 	}
 }

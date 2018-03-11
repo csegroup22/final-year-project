@@ -2,7 +2,6 @@ package org.g23.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.HashSet;
 
@@ -11,11 +10,9 @@ import org.g23.calc.CalculateTimeDifference;
 import org.g23.calc.ComputeMean;
 import org.g23.entities.json.in.LocationData;
 import org.g23.entities.json.out.StayPoint;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class StayPointDetection
 {
@@ -24,7 +21,7 @@ public class StayPointDetection
 	
 	public HashSet<StayPoint> detectStayPoint() throws JsonParseException, JsonMappingException, IOException
 	{
-		File file=new File("/home/nirmal/Documents/Final-Year-Project/Location_History.json");
+		File file=new File("/home/nirmal/Documents/Final-Year-Project/Input/nks-lh.json");
 		ObjectMapper mapper=new ObjectMapper();
 		LocationData data=mapper.readValue(file, LocationData.class);
 		ComputeMean computeMean=new ComputeMean();
@@ -71,12 +68,6 @@ public class StayPointDetection
 				i=i+1;
 			}
 		}
-		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-		String stayPointFile = ow.writeValueAsString(stayPoints);
-		PrintWriter out = new PrintWriter("/home/nirmal/Documents/Final-Year-Project/Stay_Points.json");
-		out.print(stayPointFile);
-		out.close();
-		System.out.println("Stay Points(JSON) at : /home/nirmal/Documents/Final-Year-Project/Stay_Points.json");
 		return stayPoints;
 	}
 }

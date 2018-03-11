@@ -72,7 +72,7 @@ public class ComputeMean
 		ArrayList<Activity> activities = new ArrayList<Activity>();
 		activities.add(activity);
 		
-		StayPoint point=new StayPoint(new Timestamp(time), lati, longi, accuracy, data.getLocations().get(i).getTimestampMs(), data.getLocations().get(j).getTimestampMs(), activities);
+		StayPoint point=new StayPoint(new Timestamp(time), lati, longi, accuracy, data.getLocations().get(j).getTimestampMs(), data.getLocations().get(i).getTimestampMs(), activities);
 		
 		return point;
 	}
