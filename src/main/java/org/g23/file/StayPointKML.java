@@ -1,4 +1,4 @@
-package org.g23.filegenerator;
+package org.g23.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,9 +14,9 @@ public class StayPointKML
 {
 	private final int convFactor=-7;
 	
-	public void generateKmlFile(HashSet<StayPoint> stayPoints) throws FileNotFoundException
+	public void generateKmlFile(HashSet<StayPoint> stayPoints, String kmlDestFile) throws FileNotFoundException
 	{
-		File kmlCoordinatesFile=new File("/home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.kml");
+		File kmlCoordinatesFile=new File(kmlDestFile);
 		Kml kml= new Kml();
 		Document document = kml.createAndSetDocument().withName("Stay Points KML").withOpen(true);
 		
@@ -32,6 +32,5 @@ public class StayPointKML
 			i++;
 		}
 		kml.marshal(kmlCoordinatesFile);
-		System.out.println("Stay Points(KML) at : /home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.kml");
 	}
 }

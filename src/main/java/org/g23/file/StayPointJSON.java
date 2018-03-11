@@ -1,4 +1,4 @@
-package org.g23.filegenerator;
+package org.g23.file;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -12,14 +12,13 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class StayPointJSON
 {
-	public void generateJsonFile(HashSet<StayPoint> stayPoints) throws JsonProcessingException, FileNotFoundException
+	public void generateJsonFile(HashSet<StayPoint> stayPoints, String jsonDestFile) throws JsonProcessingException, FileNotFoundException
 	{
 		ObjectMapper mapper=new ObjectMapper();
 		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
 		String stayPointFile = ow.writeValueAsString(stayPoints);
-		PrintWriter out = new PrintWriter("/home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.json");
+		PrintWriter out = new PrintWriter(jsonDestFile);
 		out.print(stayPointFile);
 		out.close();
-		System.out.println("Stay Points(JSON) at : /home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.json");
 	}
 }
