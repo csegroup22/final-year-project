@@ -17,9 +17,9 @@ public class StayPointJSON
 		ObjectMapper mapper=new ObjectMapper();
 		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
 		String stayPointFile = ow.writeValueAsString(stayPoints);
-		PrintWriter out = new PrintWriter("/home/nirmal/Documents/Final-Year-Project/Output/Stay_Points.json");
+		PrintWriter out = new PrintWriter("/home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.json");
 		out.print(stayPointFile);
 		out.close();
-		System.out.println("Stay Points(JSON) at : /home/nirmal/Documents/Final-Year-Project/Output/Stay_Points.json");
+		System.out.println("Stay Points(JSON) at : /home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.json");
 	}
 }

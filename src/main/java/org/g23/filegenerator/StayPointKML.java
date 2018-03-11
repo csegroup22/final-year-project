@@ -16,7 +16,7 @@ public class StayPointKML
 	
 	public void generateKmlFile(HashSet<StayPoint> stayPoints) throws FileNotFoundException
 	{
-		File kmlCoordinatesFile=new File("/home/nirmal/Documents/Final-Year-Project/Output/Stay_Points.kml");
+		File kmlCoordinatesFile=new File("/home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.kml");
 		Kml kml= new Kml();
 		Document document = kml.createAndSetDocument().withName("Stay Points KML").withOpen(true);
 		
@@ -32,6 +32,6 @@ public class StayPointKML
 			i++;
 		}
 		kml.marshal(kmlCoordinatesFile);
-		System.out.println("Stay Points(KML) at : /home/nirmal/Documents/Final-Year-Project/Output/Stay_Points.kml");
+		System.out.println("Stay Points(KML) at : /home/nirmal/Documents/Final-Year-Project/Output/Stay-Points.kml");
 	}
 }
