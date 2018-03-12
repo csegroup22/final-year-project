@@ -1,4 +1,4 @@
-package org.g23.main;
+package org.g22.main;
 
 import java.io.IOException;
 import com.fasterxml.jackson.core.JsonParseException;

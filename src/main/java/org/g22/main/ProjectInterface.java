@@ -1,4 +1,4 @@
-package org.g23.main;
+package org.g22.main;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.apache.commons.io.FilenameUtils;
-import org.g23.calc.StayPointCalc;
-import org.g23.entities.json.out.StayPoint;
-import org.g23.file.FileSelector;
-import org.g23.file.StayPointJSON;
-import org.g23.file.StayPointKML;
+import org.g22.calc.StayPointCalc;
+import org.g22.entities.json.out.StayPoint;
+import org.g22.file.FileSelector;
+import org.g22.file.StayPointJSON;
+import org.g22.file.StayPointKML;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;

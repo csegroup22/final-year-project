@@ -1,4 +1,4 @@
-package org.g23.entities.json.in;
+package org.g22.entities.json.in;
 
 import java.sql.Timestamp;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package org.g23.calc;
+package org.g22.calc;
 
 import java.sql.Timestamp;
 

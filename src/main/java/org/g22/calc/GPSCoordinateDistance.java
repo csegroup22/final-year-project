@@ -1,4 +1,4 @@
-package org.g23.calc;
+package org.g22.calc;
 
 public class GPSCoordinateDistance
 {

@@ -1,10 +1,10 @@
-package org.g23.file;
+package org.g22.file;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.HashSet;
 
-import org.g23.entities.json.out.StayPoint;
+import org.g22.entities.json.out.StayPoint;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,10 +1,10 @@
-package org.g23.file;
+package org.g22.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 
-import org.g23.entities.json.out.StayPoint;
+import org.g22.entities.json.out.StayPoint;
 
 import de.micromata.opengis.kml.v_2_2_0.AltitudeMode;
 import de.micromata.opengis.kml.v_2_2_0.Document;

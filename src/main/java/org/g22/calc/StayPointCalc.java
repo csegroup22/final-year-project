@@ -1,12 +1,13 @@
-package org.g23.calc;
+package org.g22.calc;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.HashSet;
 
-import org.g23.entities.json.in.LocationData;
-import org.g23.entities.json.out.StayPoint;
+import org.g22.entities.json.in.LocationData;
+import org.g22.entities.json.out.StayPoint;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

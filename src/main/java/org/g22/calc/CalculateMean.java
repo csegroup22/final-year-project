@@ -1,12 +1,12 @@
-package org.g23.calc;
+package org.g22.calc;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import org.g23.entities.json.in.Activity;
-import org.g23.entities.json.in.Activity_;
-import org.g23.entities.json.in.LocationData;
-import org.g23.entities.json.out.StayPoint;
+import org.g22.entities.json.in.Activity;
+import org.g22.entities.json.in.Activity_;
+import org.g22.entities.json.in.LocationData;
+import org.g22.entities.json.out.StayPoint;
 
 public class CalculateMean
 {
