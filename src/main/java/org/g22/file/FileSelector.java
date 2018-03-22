@@ -13,7 +13,7 @@ public class FileSelector
 	
 	public ArrayList<File> getFiles()
 	{
-		//fileChooser.setCurrentDirectory(new File("/home/nirmal/Documents/Final-Year-Project/Input/"));
+		fileChooser.setCurrentDirectory(new File("/home/nirmal/Documents/Final-Year-Project/Input/"));
 		fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JavaScript Object Notation", "json"));
 		fileChooser.setMultiSelectionEnabled(true);
 		if(fileChooser.showOpenDialog(null)==JFileChooser.APPROVE_OPTION)

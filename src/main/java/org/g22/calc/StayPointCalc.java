@@ -3,7 +3,7 @@ package org.g22.calc;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.HashSet;
+import java.util.TreeSet;
 
 import org.g22.entities.json.in.LocationData;
 import org.g22.entities.json.out.StayPoint;
@@ -17,7 +17,7 @@ public class StayPointCalc
 	private static final double distThresh = 0.1; /* In Kilometers */
 	private static final long timeThresh = 15; /* In Minutes */
 	
-	public HashSet<StayPoint> detectStayPoint(String sourceJsonPath) throws JsonParseException, JsonMappingException, IOException
+	public TreeSet<StayPoint> detectStayPoint(String sourceJsonPath) throws JsonParseException, JsonMappingException, IOException
 	{
 		File file=new File(sourceJsonPath);
 		ObjectMapper mapper=new ObjectMapper();
@@ -30,7 +30,9 @@ public class StayPointCalc
 		CalculateDistance gpsDistance=new CalculateDistance();
 		CalculateTimeDifference timeDiff=new CalculateTimeDifference();
 		
-		HashSet<StayPoint> stayPoints=new HashSet<StayPoint>();
+		//HashSet<StayPoint> stayPoints=new HashSet<StayPoint>();
+		
+		TreeSet<StayPoint> stayPoints=new TreeSet<StayPoint>();
 		
 		while(i < pointNum)
 		{

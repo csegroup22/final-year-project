@@ -2,7 +2,7 @@ package org.g22.file;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.HashSet;
+import java.util.TreeSet;
 
 import org.g22.entities.json.out.StayPoint;
 
@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class StayPointJSON
 {
-	public void generateJsonFile(HashSet<StayPoint> stayPoints, String jsonDestFile) throws JsonProcessingException, FileNotFoundException
+	public void generateJsonFile(TreeSet<StayPoint> stayPoints, String jsonDestFile) throws JsonProcessingException, FileNotFoundException
 	{
 		ObjectMapper mapper=new ObjectMapper();
 		ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();

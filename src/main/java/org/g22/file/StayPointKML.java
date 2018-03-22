@@ -2,7 +2,7 @@ package org.g22.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashSet;
+import java.util.TreeSet;
 
 import org.g22.entities.json.out.StayPoint;
 
@@ -14,7 +14,7 @@ public class StayPointKML
 {
 	private final int convFactor=-7;
 	
-	public void generateKmlFile(HashSet<StayPoint> stayPoints, String kmlDestFile) throws FileNotFoundException
+	public void generateKmlFile(TreeSet<StayPoint> stayPoints, String kmlDestFile) throws FileNotFoundException
 	{
 		File kmlCoordinatesFile=new File(kmlDestFile);
 		Kml kml= new Kml();

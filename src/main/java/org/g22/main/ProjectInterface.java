@@ -3,7 +3,7 @@ package org.g22.main;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.TreeSet;
 
 import org.apache.commons.io.FilenameUtils;
 import org.g22.calc.StayPointCalc;
@@ -43,13 +43,13 @@ public class ProjectInterface
 		for (File file : files)
 		{
 			String sorceJsonPath=file.getAbsolutePath();
-			HashSet<StayPoint> stayPoints = stayPointDetection.detectStayPoint(sorceJsonPath);
+			TreeSet<StayPoint> stayPoints = stayPointDetection.detectStayPoint(sorceJsonPath);
 			
 			StayPointJSON jsonGenerator=new StayPointJSON();
 			StayPointKML kmlGenerator = new StayPointKML();
 			
-			String jsonDestFile=jsonDestPath+FilenameUtils.getBaseName(file.toString())+".json";
-			String kmlDestFile=kmlDestPath+FilenameUtils.getBaseName(file.toString())+".kml";
+			String jsonDestFile=jsonDestPath+FilenameUtils.getBaseName(file.toString())+"-sp.json";
+			String kmlDestFile=kmlDestPath+FilenameUtils.getBaseName(file.toString())+"-sp.kml";
 			
 			jsonGenerator.generateJsonFile(stayPoints,jsonDestFile);
 			kmlGenerator.generateKmlFile(stayPoints,kmlDestFile);

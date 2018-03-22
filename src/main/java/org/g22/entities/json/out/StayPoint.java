@@ -5,14 +5,14 @@ import java.util.List;
 
 import org.g22.entities.json.in.Activity;
 
-public class StayPoint
+public class StayPoint implements Comparable<StayPoint>
 {
 	Timestamp meanTime;
     private int latitudeE7;
     private int longitudeE7;
     private int accuracy;
-    Timestamp arrivalTime;
-    Timestamp departureTime;
+    private Timestamp arrivalTime;
+    private Timestamp departureTime;
     private List<Activity> activity;
 	public StayPoint(Timestamp meanTime, int latitudeE7, int longitudeE7, int accuracy, Timestamp arrivalTime, Timestamp departureTime, List<Activity> activity)
 	{
@@ -81,13 +81,17 @@ public class StayPoint
 	{
 		this.activity = activity;
 	}
-	@Override
-	public int hashCode()
+	
+	public int compareTo(StayPoint stayPoint)
 	{
-		int hashCode=1;
-		int prime=31;
-		hashCode=prime*hashCode+latitudeE7;
-		hashCode=prime*hashCode+longitudeE7;
-		return hashCode;
+		if(this.arrivalTime.after(stayPoint.getArrivalTime()))
+		{
+			return 1;
+		}
+		if(this.arrivalTime.before(stayPoint.getArrivalTime()))
+		{
+			return -1;
+		}
+		return 0;
 	}
 }
