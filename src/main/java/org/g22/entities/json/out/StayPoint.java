@@ -7,7 +7,7 @@ import org.g22.entities.json.in.Activity;
 
 public class StayPoint implements Comparable<StayPoint>
 {
-	Timestamp meanTime;
+	private Timestamp meanTime;
     private int latitudeE7;
     private int longitudeE7;
     private int accuracy;
