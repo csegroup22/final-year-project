@@ -11,7 +11,11 @@ public class StayPointCluster
 	private ArrayList<StayPoint> clusteredStayPoints;
 	private ArrayList<StayDuration> durations;
 	
-	public StayPointCluster() {	}
+	public StayPointCluster()
+	{
+		clusteredStayPoints=new ArrayList<StayPoint>();
+		durations=new ArrayList<StayDuration>();
+	}
 	
 	public StayPointCluster(int id, StayPoint clusterCentre, ArrayList<StayPoint> clusteredStayPoint)
 	{
@@ -19,6 +23,8 @@ public class StayPointCluster
 		this.id = id;
 		this.clusterCentre = clusterCentre;
 		this.clusteredStayPoints = clusteredStayPoint;
+		clusteredStayPoints=new ArrayList<StayPoint>();
+		durations=new ArrayList<StayDuration>();
 	}
 	public int getId()
 	{

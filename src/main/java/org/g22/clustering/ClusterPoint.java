@@ -11,7 +11,7 @@ public class ClusterPoint
 {
 	private static double range=0.065;
 	
-	public void addToClusters(ArrayList<StayPoint> apparentStayPoint,TreeSet<StayPoint> stayPointsSet)
+	public ArrayList<StayPointCluster> addToClusters(ArrayList<StayPoint> apparentStayPoint,TreeSet<StayPoint> stayPointsSet)
 	{
 		ArrayList<StayPoint> stayPoints=new ArrayList<StayPoint>(stayPointsSet);
 		ArrayList<StayPointCluster> stayPointsClusters=new ArrayList<StayPointCluster>();
@@ -25,9 +25,7 @@ public class ClusterPoint
 		}
 		
 		int lastVisitedID=0;
-		
-		Timestamp lastArrivalTime=stayPoints.get(0).getArrivalTime();
-		Timestamp lastDepartureTime=stayPoints.get(0).getDepartureTime();
+		int startingPoint=0;
 		
 		for(int i=0;i<stayPoints.size();i++)
 		{
@@ -35,27 +33,44 @@ public class ClusterPoint
 			{
 				if(isStayPointLiesInsideCluster(stayPoints.get(i),stayPointsClusters.get(j).getClusterCentre()))
 				{
-					StayDuration stayDuration=new StayDuration();
-					stayDuration.setArrivalTime(lastArrivalTime);
-					stayDuration.setDepartureTime(lastDepartureTime);
-					
-					if(lastVisitedID!=stayPointsClusters.get(j).getId())
-					{
-						stayPointsClusters.get(j).getDurations().add(stayDuration);
-						lastArrivalTime=stayPoints.get(i).getArrivalTime();
-						lastVisitedID=j;
-					}
-					
-					if(lastVisitedID==stayPointsClusters.get(j).getId())
-					{
-						lastDepartureTime=stayPoints.get(i).getDepartureTime();
-						stayDuration.setDepartureTime(lastDepartureTime);
-					}
-					
+					lastVisitedID=j;
+					startingPoint=i;
 					break;
 				}
 			}
 		}
+		
+		Timestamp lastArrivalTime=stayPoints.get(startingPoint).getArrivalTime();
+		Timestamp lastDepartureTime=stayPoints.get(startingPoint).getDepartureTime();
+		
+		for(int i=0;i<stayPoints.size();i++)
+		{
+			for(int j=0;j<stayPointsClusters.size();j++)
+			{
+				if(isStayPointLiesInsideCluster(stayPoints.get(i),stayPointsClusters.get(j).getClusterCentre()))
+				{
+					stayPointsClusters.get(j).getClusteredStayPoints().add(stayPoints.get(i));
+					
+					if(lastVisitedID==stayPointsClusters.get(j).getId())
+					{
+						lastDepartureTime=stayPoints.get(i).getDepartureTime();
+					}
+					
+					if(lastVisitedID!=stayPointsClusters.get(j).getId())
+					{
+						StayDuration stayDuration=new StayDuration();
+						stayDuration.setArrivalTime(lastArrivalTime);
+						stayDuration.setDepartureTime(lastDepartureTime);
+						stayPointsClusters.get(lastVisitedID).getDurations().add(stayDuration);
+						lastArrivalTime=stayPoints.get(i).getArrivalTime();
+						lastDepartureTime=stayPoints.get(i).getDepartureTime();
+						lastVisitedID=j;
+					}
+					break;
+				}
+			}
+		}
+		return stayPointsClusters;
 	}
 
 	private boolean isStayPointLiesInsideCluster(StayPoint stayPoint, StayPoint clusterCentre)
