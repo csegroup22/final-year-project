@@ -7,6 +7,8 @@ import java.util.TreeSet;
 
 import org.apache.commons.io.FilenameUtils;
 import org.g22.calc.StayPointCalc;
+import org.g22.clustering.ClusterPoint;
+import org.g22.clustering.StayPointClustering;
 import org.g22.entities.json.out.StayPoint;
 import org.g22.file.FileSelector;
 import org.g22.file.StayPointJSON;
@@ -20,42 +22,57 @@ public class ProjectInterface
 	public void runProject() throws JsonParseException, JsonMappingException, IOException
 	{
 		StayPointCalc stayPointDetection=new StayPointCalc();
+		StayPointClustering stayPointClustering=new StayPointClustering();
+		ClusterPoint clusterPoint=new ClusterPoint();
+		
 		FileSelector fileSelector=new FileSelector();
 		
 		ArrayList<File> files = fileSelector.getFiles();
 		
 		String currDir=fileSelector.getCurrentDirectory();
 		String jsonDestPath=currDir+File.separator+".."+File.separator+"Output"+File.separator+"JSON"+File.separator;
-		String kmlDestPath=currDir+File.separator+".."+File.separator+"Output"+File.separator+"KML"+File.separator;
+		String spKmlDestPath=currDir+File.separator+".."+File.separator+"Output"+File.separator+"SPKML"+File.separator;
+		String clKmlDestPath=currDir+File.separator+".."+File.separator+"Output"+File.separator+"CLKML"+File.separator;
 		
 		File jsonFolder=new File(jsonDestPath);
-		File kmlFolder=new File(kmlDestPath);
+		File spKmlFolder=new File(spKmlDestPath);
+		File clKmlFolder=new File(clKmlDestPath);
 		
 		if(!jsonFolder.exists())
 		{
 			jsonFolder.mkdirs();
 		}
-		if(!kmlFolder.exists())
+		if(!spKmlFolder.exists())
 		{
-			kmlFolder.mkdirs();
+			spKmlFolder.mkdirs();
+		}
+		if(!clKmlFolder.exists())
+		{
+			clKmlFolder.mkdirs();
 		}
 		
 		for (File file : files)
 		{
 			String sorceJsonPath=file.getAbsolutePath();
 			TreeSet<StayPoint> stayPoints = stayPointDetection.detectStayPoint(sorceJsonPath);
+			ArrayList<StayPoint> apparentStayPoint=stayPointClustering.clustering(stayPoints);
+			clusterPoint.addToClusters(apparentStayPoint,stayPoints);
+			
 			
 			StayPointJSON jsonGenerator=new StayPointJSON();
 			StayPointKML kmlGenerator = new StayPointKML();
 			
 			String jsonDestFile=jsonDestPath+FilenameUtils.getBaseName(file.toString())+"-sp.json";
-			String kmlDestFile=kmlDestPath+FilenameUtils.getBaseName(file.toString())+"-sp.kml";
+			String spKmlDestFile=spKmlDestPath+FilenameUtils.getBaseName(file.toString())+"-sp.kml";
+			String clKmlDestFile=clKmlDestPath+FilenameUtils.getBaseName(file.toString())+"-cl.kml";
 			
 			jsonGenerator.generateJsonFile(stayPoints,jsonDestFile);
-			kmlGenerator.generateKmlFile(stayPoints,kmlDestFile);
+			kmlGenerator.generateKmlFile(stayPoints,spKmlDestFile);
+			kmlGenerator.generateKmlFile(apparentStayPoint, clKmlDestFile);
 		}
 		
 		System.out.println("JSON Files at : "+jsonFolder.getAbsolutePath());
-		System.out.println("KML Files at : "+kmlFolder.getAbsolutePath());
+		System.out.println("StayPoint-KML Files at : "+spKmlFolder.getAbsolutePath());
+		System.out.println("Clustered StayPoint-KML Files at : "+clKmlFolder.getAbsolutePath());
 	}
 }

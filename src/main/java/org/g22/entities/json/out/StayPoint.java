@@ -3,9 +3,10 @@ package org.g22.entities.json.out;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.apache.commons.math3.ml.clustering.Clusterable;
 import org.g22.entities.json.in.Activity;
 
-public class StayPoint implements Comparable<StayPoint>
+public class StayPoint implements Comparable<StayPoint>,Clusterable
 {
 	private Timestamp meanTime;
     private int latitudeE7;
@@ -94,4 +95,9 @@ public class StayPoint implements Comparable<StayPoint>
 		}
 		return 0;
 	}
+	public double[] getPoint()
+	{
+		return null;
+	}
+	
 }

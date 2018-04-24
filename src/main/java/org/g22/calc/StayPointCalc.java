@@ -17,11 +17,13 @@ public class StayPointCalc
 	private static final double distThresh = 0.1; /* In Kilometers */
 	private static final long timeThresh = 15; /* In Minutes */
 	
+	private LocationData data;
+	
 	public TreeSet<StayPoint> detectStayPoint(String sourceJsonPath) throws JsonParseException, JsonMappingException, IOException
 	{
 		File file=new File(sourceJsonPath);
 		ObjectMapper mapper=new ObjectMapper();
-		LocationData data=mapper.readValue(file, LocationData.class);
+		data=mapper.readValue(file, LocationData.class);
 		CalculateMean computeMean=new CalculateMean();
 		
 		int i=0;
