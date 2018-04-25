@@ -65,7 +65,7 @@ public class ProjectInterface
 			String sorceJsonPath=file.getAbsolutePath();
 			TreeSet<StayPoint> stayPoints = stayPointDetection.detectStayPoint(sorceJsonPath);
 			ArrayList<StayPoint> apparentStayPoint=stayPointClustering.clustering(stayPoints);
-			ArrayList<StayPointCluster> clusters = clusterPoint.addToClusters(apparentStayPoint,stayPoints);
+			ArrayList<StayPointCluster> clusters = clusterPoint.addToClusters(apparentStayPoint,stayPoints); /*Returns Aggregated Points with Duration and all the stay points lies inside specified cluster*/
 			
 			
 			StayPointJSON jsonGenerator=new StayPointJSON();
