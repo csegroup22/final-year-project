@@ -18,8 +18,10 @@ public class StayPointClustering
 	
 	public ArrayList<StayPoint> clustering(TreeSet<StayPoint> stayPoints)
 	{
+		@SuppressWarnings("rawtypes")
 		DBSCANClusterer dbscan=new DBSCANClusterer(range, minPoints,new GeoDistanceMeasure());
 		
+		@SuppressWarnings("unchecked")
 		List<Cluster<DoublePoint>> cluster=dbscan.cluster(getGPS(stayPoints));
 		
 		ArrayList<StayPoint> apparentStayPoints=new ArrayList<StayPoint>();
@@ -52,7 +54,6 @@ public class StayPointClustering
 		centre[0]=lati;
 		centre[1]=longi;
 		return centre;
-		
 	}
 
 	private static ArrayList<DoublePoint> getGPS(TreeSet<StayPoint> stayPoints)

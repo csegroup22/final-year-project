@@ -66,6 +66,7 @@ public class ClusterPoint
 						lastDepartureTime=stayPoints.get(i).getDepartureTime();
 						lastVisitedID=j;
 					}
+					
 					if(i==stayPoints.size()-1)
 					{
 						StayDuration stayDuration=new StayDuration();
